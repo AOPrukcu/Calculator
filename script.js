@@ -25,7 +25,7 @@ for (let i = 1; i <= 9; i++) {
     } else {
       first_number += e.target.textContent;
     }
-    p.textContent = first_number
+    p.textContent = first_number + operation + second_number
 
   });
   container.appendChild(button);
@@ -36,8 +36,10 @@ button_sum.textContent = "+";
 button_sum.classList.add("box");
 container.appendChild(button_sum);
 button_sum.addEventListener("click", (e) => {
-  is_clicked = !is_clicked;
+  is_clicked = true;
   operation = e.target.textContent;
+  p.textContent = first_number + operation + second_number
+
 });
 
 let button_sub = document.createElement("button");
@@ -45,8 +47,10 @@ button_sub.textContent = "-";
 button_sub.classList.add("box");
 container.appendChild(button_sub);
 button_sub.addEventListener("click", (e) => {
-  is_clicked = !is_clicked;
+  is_clicked = true;
   operation = e.target.textContent;
+  p.textContent = first_number + operation + second_number
+
 });
 
 let button_divide = document.createElement("button");
@@ -54,8 +58,10 @@ button_divide.textContent = "/";
 button_divide.classList.add("box");
 container.appendChild(button_divide);
 button_divide.addEventListener("click", (e) => {
-  is_clicked = !is_clicked;
+  is_clicked = true;
   operation = e.target.textContent;
+  p.textContent = first_number + operation + second_number
+
 });
 
 let button_multy = document.createElement("button");
@@ -63,14 +69,24 @@ button_multy.textContent = "*";
 button_multy.classList.add("box");
 container.appendChild(button_multy);
 button_multy.addEventListener("click", (e) => {
-  is_clicked = !is_clicked;
+  is_clicked = true;
   operation = e.target.textContent;
+  p.textContent = first_number + operation + second_number
+
 });
 
 let btn_clear = document.createElement("button");
 btn_clear.textContent = "clear";
 btn_clear.classList.add("box");
 container.appendChild(btn_clear);
+btn_clear.addEventListener("click",()=>{
+    operation = "";
+    first_number="";
+    second_number=""
+    is_clicked=false
+    p.textContent = ""
+
+})
 
 
 let btn_operate = document.createElement("button");
@@ -81,16 +97,22 @@ btn_operate.addEventListener("click", (e) => {
   first_number = +first_number;
   second_number = +second_number;
   if (operation == "+") {
+    add(first_number,second_number)
 
   }
   if (operation == "/") {
+    sub(first_number,second_number)
   }
   if (operation == "-") {
+    subtract(first_number,second_number)
   }
   if (operation == "*") {
+    multiply(first_number,second_number)
   }
-  is_clicked = !is_clicked
+  is_clicked = true
+  
   first_number = +p.textContent
+  second_number = "";
 });
 
 const add = function (a, b) {
